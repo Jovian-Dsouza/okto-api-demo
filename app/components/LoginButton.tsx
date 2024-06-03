@@ -10,12 +10,6 @@ export function LoginButton() {
     session ? signOut() : signIn();
   };
 
-  useEffect(() => {
-    if (session && session.id_token) {
-      console.log("Session id_token", session.id_token);
-    }
-  }, [session]);
-
   return (
     <button
       className={`font-bold border border-transparent rounded-xl px-4 py-2 transition-colors ${
@@ -25,7 +19,7 @@ export function LoginButton() {
       }`}
       onClick={handleLogin}
     >
-      {session ? "Log Out" : "Log In"}
+      Google {session ? "Log Out" : "Log In"}
     </button>
   );
 }
