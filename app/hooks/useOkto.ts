@@ -172,6 +172,10 @@ export function useOkto(apiKey: string, buildType: BuildType) {
     return makeGetRequest<Types.PortfolioData>("/v1/portfolio");
   }
 
+  async function getWallets(): Promise<Types.WalletData> {
+    return makeGetRequest<Types.WalletData>("/v1/widget/wallet");
+  }
+
   async function makePostRequest<T>(endpoint: string, data: any = null): Promise<T> {
     if (!axiosInstance) {
       throw new Error("SDK is not initialized");
@@ -192,6 +196,10 @@ export function useOkto(apiKey: string, buildType: BuildType) {
     }
   }
 
+  async function createWallet(): Promise<Types.WalletData> {
+    return makePostRequest<Types.WalletData>("/v1/wallet");
+  }
+
   async function transferTokens(
     data: Types.TransferTokens,
   ): Promise<Types.TransferTokensData> {
@@ -210,6 +218,8 @@ export function useOkto(apiKey: string, buildType: BuildType) {
     logOut,
     isLoggedIn,
     getPortfolio,
-    transferTokens
+    transferTokens,
+    getWallets,
+    createWallet
   };
 }
