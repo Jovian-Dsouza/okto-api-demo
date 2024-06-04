@@ -16,19 +16,18 @@ export enum OrderStatus {
 }
 
 export interface OktoContextType {
-  showPinSheet: (callback: (success: boolean) => void) => void;
-  showWidgetSheet: () => void;
-  closeBottomSheet: () => void;
+  isLoggedIn: Boolean,
   authenticate: (
     idToken: string,
     callback: (result: any, error: any) => void,
   ) => void;
+  logOut: () => void;
   getPortfolio(): Promise<PortfolioData>;
   getSupportedNetworks: () => Promise<NetworkData>;
   getSupportedTokens: () => Promise<TokensData>;
   getUserDetails: () => Promise<User>;
   getWallets: () => Promise<WalletData>;
-  orderHistory: (query?: Partial<OrderQuery>) => Promise<OrderData>;
+  orderHistory: (query: Partial<OrderQuery>) => Promise<OrderData>;
   getNftOrderDetails(
     query: Partial<NftOrderDetailsQuery>,
   ): Promise<NftOrderDetailsData>;
